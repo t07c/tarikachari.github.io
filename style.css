@@ -4,12 +4,13 @@
     box-sizing: border-box;
 }
 
-body {
+html, body {
+    height: 100%;
+    margin: 0;
     background-color: #121212;
     color: #e0e0e0;
     font-family: 'JetBrains Mono', monospace;
-    height: 100vh;
-    overflow: hidden;
+    overflow: hidden; /* Locks the outer window so only the CAD viewport scrolls */
 }
 
 /* Layout Container */
@@ -70,6 +71,7 @@ body {
 .tree-item a {
     color: #a0a0a0;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .tree-item a:hover {
@@ -81,13 +83,13 @@ body {
     color: #777;
 }
 
-/* Viewport Area */
+/* Viewport Area - This is what scrolls */
 .viewport-area {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     height: 100vh;
-    overflow-y: auto;
+    overflow-y: auto !important; /* Forces scrollability */
     background-color: #141414;
     background-image: 
         linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
@@ -128,6 +130,7 @@ body {
     max-width: 950px;
     width: 100%;
     margin: 0 auto;
+    padding-bottom: 100px; /* Extra space at the bottom for smooth scrolling */
 }
 
 /* Drawing Sheet */
