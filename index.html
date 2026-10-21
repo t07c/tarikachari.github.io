@@ -100,19 +100,23 @@
         </main>
     </div>
 
-    <!-- JavaScript to handle smooth scrolling inside the CAD viewport -->
+<!-- JavaScript to handle precise smooth scrolling inside the CAD viewport -->
     <script>
-        document.querySelectorAll('.nav-link').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+        document.querySelectorAll('.tree-item a').forEach(link => {
+            link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 const targetSection = document.querySelector(targetId);
                 const viewport = document.getElementById('viewport');
                 
-                viewport.scrollTo({
-                    top: targetSection.offsetTop - 70,
-                    behavior: 'smooth'
-                });
+                if (targetSection && viewport) {
+                    // Calculate the section's position relative to the scrollable viewport container
+                    const topPos = targetSection.offsetTop - viewport.offsetTop;
+                    viewport.scrollTo({
+                        top: topPos - 20, // 20px padding offset for breathing room
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
     </script>
