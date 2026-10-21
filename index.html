@@ -19,21 +19,21 @@
             <ul class="tree-list">
                 <li class="tree-item root">📁 Tarika_Patel (Design)
                     <ul>
-                        <li class="tree-item">📄 <a href="#about">Sheet1 (About Me)</a></li>
-                        <li class="tree-item">📁 <a href="#projects">Assemblies</a>
+                        <li class="tree-item">📄 <a href="#about" class="nav-link">Sheet1 (About Me)</a></li>
+                        <li class="tree-item">📁 <a href="#projects" class="nav-link">Assemblies</a>
                             <ul>
                                 <li class="tree-item sub">⚙️ CAD_Optimization.sldprt</li>
                                 <li class="tree-item sub">🤖 Soft_Robotics.sldasm</li>
                             </ul>
                         </li>
-                        <li class="tree-item">📝 <a href="#contact">Revision_Table</a></li>
+                        <li class="tree-item">📝 <a href="#contact" class="nav-link">Revision_Table</a></li>
                     </ul>
                 </li>
             </ul>
         </aside>
 
         <!-- Right Viewport Area -->
-        <main class="viewport-area">
+        <main class="viewport-area" id="viewport">
             
             <header class="cad-toolbar">
                 <div class="toolbar-group">
@@ -100,5 +100,21 @@
         </main>
     </div>
 
+    <!-- JavaScript to handle smooth scrolling inside the CAD viewport -->
+    <script>
+        document.querySelectorAll('.nav-link').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                const viewport = document.getElementById('viewport');
+                
+                viewport.scrollTo({
+                    top: targetSection.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
