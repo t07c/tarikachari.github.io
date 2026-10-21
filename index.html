@@ -25,14 +25,38 @@
         </aside>
 
         <main class="viewport-area">
-            <header class="cad-toolbar">
-                <div class="toolbar-group">
-                    <span class="tool-btn">View</span>
-                    <span class="tool-btn">Evaluate</span>
-                    <span class="tool-btn">Mates</span>
+            <!-- Top App Header with Menus & Document Tabs -->
+            <header class="app-top-header">
+                <nav class="sw-top-bar">
+                    <div class="sw-menu-group">
+                        <span class="sw-menu-item"><strong>File</strong></span>
+                        <span class="sw-menu-item">Edit</span>
+                        <span class="sw-menu-item">View</span>
+                        <span class="sw-menu-item">Insert</span>
+                        <span class="sw-menu-item">Tools</span>
+                        <span class="sw-menu-item">Window</span>
+                        <span class="sw-menu-item">Help</span>
+                    </div>
+                    <div class="sw-file-info" style="color: #666; font-size: 10px;">
+                        Configuration: Default &bull; MMGS
+                    </div>
+                </nav>
+
+                <!-- Document Tabs -->
+                <div class="sw-document-tabs">
+                    <a href="/tarikachari.github.io/" class="doc-tab active">
+                        📄 Sheet1_About.slddrw <span class="doc-close">✕</span>
+                    </a>
+                    <a href="/tarikachari.github.io/projects.html" class="doc-tab">
+                        📁 Assemblies.sldasm <span class="doc-close">✕</span>
+                    </a>
+                    <a href="/tarikachari.github.io/contact.html" class="doc-tab">
+                        📝 Revision_Table.xlsx <span class="doc-close">✕</span>
+                    </a>
                 </div>
-                <div class="toolbar-status">Scale 1:1 &bull; MMGS</div>
             </header>
+
+            <!-- Rest of your content -->
 
             <div class="drawing-canvas">
                 <section class="drawing-sheet">
