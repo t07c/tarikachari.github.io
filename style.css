@@ -79,7 +79,7 @@ body {
     color: #003366;
 }
 
-/* --- Viewport & CommandManager Ribbon --- */
+/* --- Viewport & Top Menu --- */
 .viewport-area {
     flex: 1;
     display: flex;
@@ -95,6 +95,7 @@ body {
     justify-content: space-between;
     font-size: 11px;
     color: #333;
+    position: relative;
 }
 
 .menu-items {
@@ -102,11 +103,56 @@ body {
     gap: 12px;
 }
 
-.menu-items span {
+/* File Dropdown Styles */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 2px;
+}
+
+.dropbtn:hover {
+    background: #e0e0e0;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 10;
+    border: 1px solid #ccc;
+    top: 100%;
+    left: 0;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 6px 12px;
+    text-decoration: none;
+    display: block;
+    font-size: 11px;
+}
+
+.dropdown-content a:hover {
+    background-color: #e6f2ff;
+}
+
+.dropdown.show .dropdown-content {
+    display: block;
+}
+
+.menu-items > span:not(.dropdown) {
     cursor: pointer;
     padding: 2px 5px;
 }
 
+/* CommandManager Ribbon */
 .command-manager {
     background: #e8e8e8;
     border-bottom: 1px solid #c8c8c8;
@@ -155,22 +201,73 @@ body {
     color: #666;
 }
 
-/* --- Drawing Sheet Canvas --- */
+/* --- Drawing Sheet & Splash Screen Canvas --- */
 .drawing-canvas {
     flex: 1;
     padding: 30px;
     overflow-y: auto;
     background: radial-gradient(circle, #ccc 1px, transparent 1px);
     background-size: 20px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+/* SolidWorks Splash Screen Watermark Style */
+.splash-screen {
+    text-align: center;
+    user-select: none;
+    opacity: 0.35; /* Subtle watermark look like SolidWorks */
+    display: flex;
+    align-items: baseline;
+    gap: 15px;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+.splash-logo-placeholder {
+    font-style: italic;
+    font-size: 64px;
+    font-weight: 300;
+    color: #555;
+    letter-spacing: -2px;
+    border: 2px dashed #888;
+    padding: 0 15px;
+    border-radius: 6px;
+}
+
+.splash-text-group {
+    text-align: left;
+}
+
+.splash-title {
+    font-size: 52px;
+    font-weight: 300;
+    color: #444;
+    letter-spacing: 1px;
+}
+
+.splash-title strong {
+    font-weight: 700;
+    color: #222;
+}
+
+.splash-year {
+    font-size: 24px;
+    font-weight: 300;
+    color: #666;
+    margin-top: -5px;
+    text-align: right;
+    letter-spacing: 2px;
+}
+
+/* Standard Drawing Sheet (When project is active) */
 .drawing-sheet {
     background-color: #ffffff;
     border: 1px solid #b5b5b5;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     padding: 40px;
     max-width: 900px;
-    margin: 0 auto;
+    width: 100%;
 }
 
 .sheet-content h2 {
