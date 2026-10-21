@@ -5,12 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assemblies | Tarika Patel</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
     <div class="cad-interface">
-
         <aside class="feature-tree">
             <div class="tree-header">
                 <span class="sw-icon"></span> FeatureManager — Assembly
@@ -27,63 +24,52 @@
         </aside>
 
         <main class="viewport-area">
-            
-            <header class="app-top-header">
-                <nav class="sw-top-bar">
-                    <div class="sw-menu-group">
-                        <span class="sw-menu-item"><strong>File</strong></span>
-                        <span class="sw-menu-item">Edit</span>
-                        <span class="sw-menu-item">View</span>
-                        <span class="sw-menu-item">Insert</span>
-                        <span class="sw-menu-item">Tools</span>
-                        <span class="sw-menu-item">Help</span>
-                    </div>
-                    <div class="sw-file-info" style="color: #666; font-size: 10px;">
-                        Config: Default &bull; MMGS
-                    </div>
+            <div class="sw-top-menu">
+                <div class="menu-items">
+                    <span><strong>File</strong></span><span>Edit</span><span>View</span><span>Insert</span><span>Tools</span><span>Window</span><span>Help</span>
+                </div>
+                <div style="color: #666;">Assembly: Projects.sldasm &bull; MMGS</div>
+            </div>
+
+            <header class="command-manager">
+                <nav class="ribbon-tabs">
+                    <a href="/tarikachari.github.io/" class="ribbon-tab">Sheet1: About Me</a>
+                    <a href="/tarikachari.github.io/projects.html" class="ribbon-tab active">Assemblies</a>
+                    <a href="/tarikachari.github.io/contact.html" class="ribbon-tab">Revision Table</a>
                 </nav>
-
-                <div class="sw-document-tabs">
-                    <a href="/tarikachari.github.io/" class="doc-tab" id="tab-about">
-                        📄 Sheet1_About.slddrw <span class="doc-close">✕</span>
-                    </a>
-                    <a href="/tarikachari.github.io/projects.html" class="doc-tab" id="tab-projects">
-                        📁 Assemblies.sldasm <span class="doc-close">✕</span>
-                    </a>
-                    <a href="/tarikachari.github.io/contact.html" class="doc-tab" id="tab-contact">
-                        📝 Revision_Table.xlsx <span class="doc-close">✕</span>
-                    </a>
+                <div class="ribbon-toolbar">
+                    <div class="tool-icon-group">
+                        <button class="cad-btn">Exploded View</button>
+                        <button class="cad-btn">Mate</button>
+                    </div>
+                    <div class="tool-icon-group">
+                        <button class="cad-btn">Interference Detection</button>
+                    </div>
                 </div>
-            </header>
-
-            <header class="cad-toolbar">
-                <div class="toolbar-group">
-                    <span class="tool-btn">Exploded View</span>
-                    <span class="tool-btn">Mass Properties</span>
-                </div>
-                <div class="toolbar-status">Config: Default &bull; Assemblies View</div>
             </header>
 
             <div class="drawing-canvas">
-                <section class="section-container">
-                    <h3>FEATURED ASSEMBLIES &amp; PARTS</h3>
-                    <div class="project-grid">
-                        <div class="project-card">
-                            <div class="card-top">Part ID: CAD_01</div>
-                            <h4>CAD Optimization Bracket</h4>
-                            <p>Parametric modeling and structural FEA using ANSYS to reduce mass while maintaining load safety factors.</p>
-                            <div class="tags">
-                                <span class="tag">SolidWorks</span>
-                                <span class="tag">FEA</span>
+                <section class="drawing-sheet" style="background: #fff; padding: 30px;">
+                    <div class="sheet-content">
+                        <h2>FEATURED ASSEMBLIES &amp; PARTS</h2>
+                        <div class="project-grid">
+                            <div class="project-card">
+                                <div class="card-top">Part ID: CAD_01</div>
+                                <h4>CAD Optimization Bracket</h4>
+                                <p>Parametric modeling and structural FEA using ANSYS to reduce mass while maintaining load safety factors.</p>
+                                <div class="tags">
+                                    <span class="tag">SolidWorks</span>
+                                    <span class="tag">FEA</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="project-card">
-                            <div class="card-top">Part ID: ROB_02</div>
-                            <h4>Soft Robotics Actuator</h4>
-                            <p>Mechanical modeling, molding design, and physical prototyping for fluid-driven gripping mechanisms.</p>
-                            <div class="tags">
-                                <span class="tag">Prototyping</span>
-                                <span class="tag">Kinematics</span>
+                            <div class="project-card">
+                                <div class="card-top">Part ID: ROB_02</div>
+                                <h4>Soft Robotics Actuator</h4>
+                                <p>Mechanical modeling, molding design, and physical prototyping for fluid-driven gripping mechanisms.</p>
+                                <div class="tags">
+                                    <span class="tag">Prototyping</span>
+                                    <span class="tag">Kinematics</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -91,16 +77,5 @@
             </div>
         </main>
     </div>
-
-    <script>
-        const path = window.location.pathname;
-        if (path.includes("projects.html")) {
-            document.getElementById("tab-projects").classList.add("active");
-        } else if (path.includes("contact.html")) {
-            document.getElementById("tab-contact").classList.add("active");
-        } else {
-            document.getElementById("tab-about").classList.add("active");
-        }
-    </script>
 </body>
 </html>
