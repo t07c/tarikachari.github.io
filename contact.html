@@ -8,7 +8,9 @@
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <div class="cad-interface">
+
         <aside class="feature-tree">
             <div class="tree-header">
                 <span class="sw-icon"></span> FeatureManager — Assembly
@@ -18,13 +20,42 @@
                     <ul>
                         <li class="tree-item">📄 <a href="/tarikachari.github.io/">Sheet1 (About Me)</a></li>
                         <li class="tree-item">📁 <a href="/tarikachari.github.io/projects.html">Assemblies</a></li>
-                        <li class="tree-item">📝 <a href="/tarikachari.github.io/contact.html" style="color: #4da6ff;">Revision_Table</a></li>
+                        <li class="tree-item">📝 <a href="/tarikachari.github.io/contact.html">Revision_Table</a></li>
                     </ul>
                 </li>
             </ul>
         </aside>
 
         <main class="viewport-area">
+            
+            <header class="app-top-header">
+                <nav class="sw-top-bar">
+                    <div class="sw-menu-group">
+                        <span class="sw-menu-item"><strong>File</strong></span>
+                        <span class="sw-menu-item">Edit</span>
+                        <span class="sw-menu-item">View</span>
+                        <span class="sw-menu-item">Insert</span>
+                        <span class="sw-menu-item">Tools</span>
+                        <span class="sw-menu-item">Help</span>
+                    </div>
+                    <div class="sw-file-info" style="color: #666; font-size: 10px;">
+                        Config: Default &bull; MMGS
+                    </div>
+                </nav>
+
+                <div class="sw-document-tabs">
+                    <a href="/tarikachari.github.io/" class="doc-tab" id="tab-about">
+                        📄 Sheet1_About.slddrw <span class="doc-close">✕</span>
+                    </a>
+                    <a href="/tarikachari.github.io/projects.html" class="doc-tab" id="tab-projects">
+                        📁 Assemblies.sldasm <span class="doc-close">✕</span>
+                    </a>
+                    <a href="/tarikachari.github.io/contact.html" class="doc-tab" id="tab-contact">
+                        📝 Revision_Table.xlsx <span class="doc-close">✕</span>
+                    </a>
+                </div>
+            </header>
+
             <header class="cad-toolbar">
                 <div class="toolbar-group">
                     <span class="tool-btn">ECO Log</span>
@@ -36,7 +67,7 @@
                 <section class="drawing-sheet">
                     <div class="sheet-content">
                         <h2>REVISION HISTORY &amp; CONTACT</h2>
-                        <p>Ready to collaborate? Reach out via email at <a href="mailto:tarika@tufts.edu" style="color: #4da6ff;">tarika@tufts.edu</a>.</p>
+                        <p>Looking to collaborate on mechanical design projects, CAD studies, or engineering initiatives? Reach out directly via email at <a href="mailto:tarika@tufts.edu" style="color: #ff9900;">tarika@tufts.edu</a>.</p>
                     </div>
                     <table class="title-block">
                         <tr>
@@ -47,8 +78,14 @@
                         </tr>
                         <tr>
                             <td>1.0</td>
-                            <td>Initial Portfolio Release</td>
+                            <td>Initial Portfolio Release &amp; CAD Framework</td>
                             <td>2026-10-21</td>
+                            <td>T. Patel</td>
+                        </tr>
+                        <tr>
+                            <td>1.1</td>
+                            <td>Added Assembly Modules &amp; FEA Documentation</td>
+                            <td>Upcoming</td>
                             <td>T. Patel</td>
                         </tr>
                     </table>
@@ -56,5 +93,16 @@
             </div>
         </main>
     </div>
+
+    <script>
+        const path = window.location.pathname;
+        if (path.includes("projects.html")) {
+            document.getElementById("tab-projects").classList.add("active");
+        } else if (path.includes("contact.html")) {
+            document.getElementById("tab-contact").classList.add("active");
+        } else {
+            document.getElementById("tab-about").classList.add("active");
+        }
+    </script>
 </body>
 </html>
