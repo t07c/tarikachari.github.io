@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarika Patel | CAD Portfolio</title>
+    <title>TarikaChari | CAD Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -29,9 +29,16 @@
         <main class="viewport-area">
             <div class="sw-top-menu">
                 <div class="menu-items">
-                    <span><strong>File</strong></span><span>Edit</span><span>View</span><span>Insert</span><span>Tools</span><span>Help</span>
+                    <!-- File Dropdown -->
+                    <div class="dropdown" id="fileDropdown">
+                        <span class="dropbtn" onclick="toggleDropdown()"><strong>File ▾</strong></span>
+                        <div class="dropdown-content">
+                            <a href="index.html">Home</a>
+                        </div>
+                    </div>
+                    <span>Edit</span><span>View</span><span>Insert</span><span>Tools</span><span>Help</span>
                 </div>
-                <div id="file-status-bar" style="color: #666;">Active Part: Project_1.sldprt &bull; MMGS</div>
+                <div id="file-status-bar" style="color: #666;">Ready &bull; MMGS</div>
             </div>
 
             <!-- CommandManager Ribbon Tabs -->
@@ -43,35 +50,38 @@
                     <a class="ribbon-tab" data-tab="validation">Analysis &amp; Validation</a>
                 </nav>
                 <div class="ribbon-toolbar" id="ribbon-toolbar-text">
-                    Loading configuration data...
+                    Select a project from the FeatureManager tree to begin.
                 </div>
             </header>
 
-            <!-- Dynamic Drawing Sheet Canvas -->
-            <div class="drawing-canvas">
-                <section class="drawing-sheet">
-                    <div class="sheet-content" id="sheet-content-area">
-                        <!-- Dynamic content injected here via JS -->
-                    </div>
-                    <table class="title-block">
-                        <tr>
-                            <td rowspan="2" class="company-cell">TUFT_MECH</td>
-                            <td id="tb-designer"><strong>DESIGNED BY:</strong> Tarika Patel</td>
-                            <td id="tb-date"><strong>DATE:</strong> 2026-10-21</td>
-                        </tr>
-                        <tr>
-                            <td id="tb-major"><strong>MAJOR:</strong> Mechanical Eng.</td>
-                            <td id="tb-status"><strong>CONFIG:</strong> Default / Rev 1.0</td>
-                        </tr>
-                    </table>
-                </section>
+            <!-- Canvas Area (Displays Splash Screen or Project Sheet) -->
+            <div class="drawing-canvas" id="canvas-container">
+                <!-- Injected dynamically via script -->
             </div>
         </main>
     </div>
 
-    <!-- Dynamic Content & State Script -->
+    <!-- Application Script -->
     <script>
-        // 1. Database of your projects and their respective tabs
+        // Dropdown toggle function
+        function toggleDropdown() {
+            document.getElementById("fileDropdown").classList.toggle("show");
+        }
+
+        // Close dropdown if clicked outside
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.parentElement.classList.contains('show')) {
+                        openDropdown.parentElement.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        // Portfolio Database
         const portfolioData = {
             1: {
                 title: "Project 1: CAD Bracket Optimization",
@@ -113,7 +123,7 @@
                 decisions: {
                     toolbar: "Configuration: Fiber Reinforcement Routing",
                     heading: "DESIGN DECISIONS",
-                    body: "<ul><li>Embedded inextensible constrained fiber layers along one side to force asymmetric asymmetric bending upon pressurization.</li><li>Optimized chamber wall thickness to 2.2mm to balance flexibility with burst-pressure resistance.</li></ul>"
+                    body: "<ul><li>Embedded inextensible constrained fiber layers along one side to force asymmetric bending upon pressurization.</li><li>Optimized chamber wall thickness to 2.2mm to balance flexibility with burst-pressure resistance.</li></ul>"
                 },
                 validation: {
                     toolbar: "Configuration: Pressure Testing & Displacement Analysis",
@@ -147,47 +157,71 @@
             }
         };
 
-        // 2. Read URL Parameters (?project=X&tab=Y)
+        // Read URL Parameters
         const urlParams = new URLSearchParams(window.location.search);
-        const currentProjectID = urlParams.get('project') || '1';
+        const currentProjectID = urlParams.get('project');
         const currentTabName = urlParams.get('tab') || 'constraints';
 
-        // 3. Highlight Sidebar Item
-        const activeSidebarLink = document.getElementById(`sidebar-proj-${currentProjectID}`);
-        if (activeSidebarLink) {
-            activeSidebarLink.classList.add('active-project');
+        const canvasContainer = document.getElementById("canvas-container");
+
+        if (!currentProjectID) {
+            // --- SHOW SPLASH SCREEN (Home View) ---
+            document.getElementById("file-status-bar").innerHTML = `Ready &bull; MMGS`;
+            document.getElementById("ribbon-toolbar-text").innerHTML = `Select a project from the FeatureManager tree to load configurations.`;
+            canvasContainer.innerHTML = `
+                <div class="splash-screen">
+                    <div class="splash-logo-placeholder">[TC]</div>
+                    <div class="splash-text-group">
+                        <div class="splash-title"><strong>Tarika</strong>Chari</div>
+                        <div class="splash-year">2026</div>
+                    </div>
+                </div>
+            `;
+            // Disable ribbon tabs when on home screen
+            document.querySelectorAll('.ribbon-tab').forEach(t => t.style.pointerEvents = 'none');
+        } else {
+            // --- SHOW ACTIVE PROJECT SHEET ---
+            const projData = portfolioData[currentProjectID];
+            const tabData = projData[currentTabName] || projData.constraints;
+
+            // Highlight sidebar item
+            const activeLink = document.getElementById(`sidebar-proj-${currentProjectID}`);
+            if (activeLink) activeLink.classList.add('active-project');
+
+            // Update status & toolbar
+            document.getElementById("file-status-bar").innerHTML = `Active File: ${projData.filename} &bull; MMGS`;
+            document.getElementById("ribbon-toolbar-text").innerHTML = tabData.toolbar;
+
+            // Render drawing sheet
+            canvasContainer.innerHTML = `
+                <section class="drawing-sheet">
+                    <div class="sheet-content">
+                        <h2>${tabData.heading}</h2>
+                        <p>${tabData.body}</p>
+                    </div>
+                    <table class="title-block">
+                        <tr>
+                            <td rowspan="2" class="company-cell">TUFT_MECH</td>
+                            <td><strong>DESIGNED BY:</strong> Tarika Patel</td>
+                            <td><strong>DATE:</strong> 2026-10-21</td>
+                        </tr>
+                        <tr>
+                            <td><strong>MAJOR:</strong> Mechanical Eng.</td>
+                            <td><strong>PROJECT:</strong> ${projData.title}</td>
+                        </tr>
+                    </table>
+                </section>
+            `;
+
+            // Setup Ribbon Tabs
+            document.querySelectorAll('.ribbon-tab').forEach(tabElement => {
+                const tabKey = tabElement.getAttribute('data-tab');
+                tabElement.setAttribute('href', `index.html?project=${currentProjectID}&tab=${tabKey}`);
+                if (tabKey === currentTabName) {
+                    tabElement.classList.add('active');
+                }
+            });
         }
-
-        // 4. Populate Content Based on State
-        const projData = portfolioData[currentProjectID] || portfolioData[1];
-        const tabData = projData[currentTabName] || projData.constraints;
-
-        // Update File Status Bar
-        document.getElementById("file-status-bar").innerHTML = `Active File: ${projData.filename} &bull; MMGS`;
-
-        // Update Ribbon Toolbar text
-        document.getElementById("ribbon-toolbar-text").innerHTML = tabData.toolbar;
-
-        // Update Sheet Content
-        document.getElementById("sheet-content-area").innerHTML = `
-            <h2>${tabData.heading}</h2>
-            <p>${tabData.body}</p>
-        `;
-
-        // Update Title block subtitle
-        document.getElementById("tb-status").innerHTML = `<strong>PROJECT:</strong> ${projData.title}`;
-
-        // 5. Setup Top Ribbon Tab Clickable Links with correct parameters
-        document.querySelectorAll('.ribbon-tab').forEach(tabElement => {
-            const tabKey = tabElement.getAttribute('data-tab');
-            // Set the href so clicking keeps the current project ID but switches the tab
-            tabElement.setAttribute('href', `index.html?project=${currentProjectID}&tab=${tabKey}`);
-            
-            // Highlight active tab
-            if (tabKey === currentTabName) {
-                tabElement.classList.add('active');
-            }
-        });
     </script>
 </body>
 </html>
