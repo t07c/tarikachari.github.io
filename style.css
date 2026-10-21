@@ -12,26 +12,27 @@ body {
     overflow: hidden;
 }
 
-/* CAD Interface Grid (Sidebar + Viewport) */
+/* Layout Container */
 .cad-interface {
     display: flex;
-    height: 100vh;
     width: 100vw;
+    height: 100vh;
 }
 
-/* Feature Tree Sidebar */
+/* Sidebar Tree */
 .feature-tree {
-    width: 280px;
+    width: 300px;
     background: #181818;
     border-right: 1px solid #2a2a2a;
     display: flex;
     flex-direction: column;
-    font-size: 13px;
+    flex-shrink: 0;
+    height: 100vh;
 }
 
 .tree-header {
-    background: #202020;
-    padding: 12px 15px;
+    background: #1f1f1f;
+    padding: 15px;
     font-size: 11px;
     color: #888;
     border-bottom: 1px solid #2a2a2a;
@@ -49,26 +50,26 @@ body {
 
 .tree-list {
     list-style: none;
-    padding: 15px;
+    padding: 20px 15px;
+    font-size: 13px;
     overflow-y: auto;
 }
 
 .tree-list ul {
     list-style: none;
-    padding-left: 15px;
-    margin-top: 5px;
+    padding-left: 18px;
+    margin-top: 8px;
     border-left: 1px dashed #333;
 }
 
 .tree-item {
-    margin: 6px 0;
+    margin: 8px 0;
     color: #ccc;
 }
 
 .tree-item a {
     color: #a0a0a0;
     text-decoration: none;
-    transition: color 0.2s;
 }
 
 .tree-item a:hover {
@@ -82,35 +83,38 @@ body {
 
 /* Viewport Area */
 .viewport-area {
-    flex: 1;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
+    height: 100vh;
+    overflow-y: auto;
     background-color: #141414;
-    /* Blueprint grid background */
     background-image: 
         linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-    background-size: 30px 30px;
-    overflow-y: auto;
+    background-size: 35px 35px;
 }
 
-/* Top Toolbar */
+/* Toolbar */
 .cad-toolbar {
     background: #1a1a1a;
-    padding: 10px 20px;
+    padding: 12px 25px;
     border-bottom: 1px solid #2a2a2a;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 .tool-btn {
     background: #222;
     border: 1px solid #333;
-    padding: 4px 10px;
+    padding: 5px 12px;
     border-radius: 3px;
-    margin-right: 5px;
+    margin-right: 6px;
     color: #ccc;
 }
 
@@ -118,21 +122,21 @@ body {
     color: #777;
 }
 
-/* Drawing Canvas Container */
+/* Canvas */
 .drawing-canvas {
     padding: 40px;
-    max-width: 900px;
-    margin: 0 auto;
+    max-width: 950px;
     width: 100%;
+    margin: 0 auto;
 }
 
-/* Drawing Sheet (About Me Card) */
+/* Drawing Sheet */
 .drawing-sheet {
     background: #1a1a1a;
     border: 1px solid #333;
     border-radius: 4px;
     margin-bottom: 40px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 .sheet-content {
@@ -142,7 +146,7 @@ body {
 .drawing-sheet h2 {
     font-size: 14px;
     color: #4da6ff;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     letter-spacing: 1px;
 }
 
@@ -152,7 +156,7 @@ body {
     color: #aaa;
 }
 
-/* Engineering Title Block */
+/* Title Block */
 .title-block {
     width: 100%;
     border-collapse: collapse;
@@ -163,7 +167,7 @@ body {
 
 .title-block td {
     border: 1px solid #333;
-    padding: 8px 12px;
+    padding: 10px 15px;
     color: #888;
 }
 
@@ -176,10 +180,10 @@ body {
     color: #ff9900 !important;
     letter-spacing: 1px;
     text-align: center;
-    width: 30%;
+    width: 28%;
 }
 
-/* Projects Section */
+/* Projects */
 .section-container {
     margin-bottom: 40px;
 }
@@ -193,16 +197,15 @@ body {
 
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
 }
 
 .project-card {
     background: #181818;
     border: 1px solid #2a2a2a;
-    padding: 20px;
+    padding: 22px;
     border-radius: 4px;
-    position: relative;
     transition: border-color 0.2s;
 }
 
@@ -231,25 +234,26 @@ body {
 
 .tags {
     display: flex;
-    gap: 5px;
+    gap: 6px;
 }
 
 .tag {
     font-size: 10px;
     background: #222;
     color: #4da6ff;
-    padding: 3px 6px;
+    padding: 3px 8px;
     border-radius: 2px;
     border: 1px solid #333;
 }
 
-/* Revision Table Footer */
+/* Footer / Revision Table */
 .revision-table {
     background: #1a1a1a;
     border: 1px solid #333;
     padding: 25px;
     border-radius: 4px;
     font-size: 12px;
+    margin-bottom: 40px;
 }
 
 .revision-table h3 {
