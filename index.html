@@ -3,74 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarika Patel | Sheet1 - About Me</title>
+    <title>Tarika Patel | CAD Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="cad-interface">
+        
+        <!-- Sidebar FeatureManager with Projects -->
         <aside class="feature-tree">
             <div class="tree-header">
-                <span class="sw-icon"></span> FeatureManager — Assembly
+                <span class="sw-icon"></span> FeatureManager — Assemblies
             </div>
             <ul class="tree-list">
-                <li class="tree-item root">📁 Tarika_Patel (Design)
+                <li class="tree-item root">📁 Tarika_Patel (Portfolios)
                     <ul>
-                        <li class="tree-item">📄 <a href="/tarikachari.github.io/">Sheet1 (About Me)</a></li>
-                        <li class="tree-item">📁 <a href="/tarikachari.github.io/projects.html">Assemblies</a></li>
-                        <li class="tree-item">📝 <a href="/tarikachari.github.io/contact.html">Revision_Table</a></li>
+                        <li class="tree-item">📦 <a href="index.html?project=1&tab=constraints" id="sidebar-proj-1">Project 1: CAD Bracket Optimization</a></li>
+                        <li class="tree-item">📦 <a href="index.html?project=2&tab=constraints" id="sidebar-proj-2">Project 2: Soft Robotics Actuator</a></li>
+                        <li class="tree-item">📦 <a href="index.html?project=3&tab=constraints" id="sidebar-proj-3">Project 3: Bluetooth Audio Helmet</a></li>
                     </ul>
                 </li>
             </ul>
         </aside>
 
+        <!-- Viewport Area -->
         <main class="viewport-area">
-            <!-- Top SolidWorks Menu -->
             <div class="sw-top-menu">
                 <div class="menu-items">
-                    <span><strong>File</strong></span><span>Edit</span><span>View</span><span>Insert</span><span>Tools</span><span>Window</span><span>Help</span>
+                    <span><strong>File</strong></span><span>Edit</span><span>View</span><span>Insert</span><span>Tools</span><span>Help</span>
                 </div>
-                <div style="color: #666;">Part: Tarika_Profile.sldprt &bull; MMGS</div>
+                <div id="file-status-bar" style="color: #666;">Active Part: Project_1.sldprt &bull; MMGS</div>
             </div>
 
-            <!-- CommandManager Ribbon -->
+            <!-- CommandManager Ribbon Tabs -->
             <header class="command-manager">
-                <nav class="ribbon-tabs">
-                    <a href="/tarikachari.github.io/" class="ribbon-tab active">Sheet1: About Me</a>
-                    <a href="/tarikachari.github.io/projects.html" class="ribbon-tab">Assemblies</a>
-                    <a href="/tarikachari.github.io/contact.html" class="ribbon-tab">Revision Table</a>
+                <nav class="ribbon-tabs" id="ribbon-tabs-container">
+                    <a class="ribbon-tab" data-tab="constraints">Objective &amp; Constraints</a>
+                    <a class="ribbon-tab" data-tab="role">My Role</a>
+                    <a class="ribbon-tab" data-tab="decisions">Design Decisions</a>
+                    <a class="ribbon-tab" data-tab="validation">Analysis &amp; Validation</a>
                 </nav>
-                <div class="ribbon-toolbar">
-                    <div class="tool-icon-group">
-                        <button class="cad-btn">Zoom to Fit</button>
-                        <button class="cad-btn">Section View</button>
-                    </div>
-                    <div class="tool-icon-group">
-                        <button class="cad-btn">Evaluate</button>
-                        <button class="cad-btn">Mass Properties</button>
-                    </div>
+                <div class="ribbon-toolbar" id="ribbon-toolbar-text">
+                    Loading configuration data...
                 </div>
             </header>
 
+            <!-- Dynamic Drawing Sheet Canvas -->
             <div class="drawing-canvas">
                 <section class="drawing-sheet">
-                    <div class="sheet-content">
-                        <h2>DESIGN INTENT &amp; PROFILE</h2>
-                        <p>Mechanical Engineering undergraduate at Tufts University specializing in parametric CAD, finite element analysis (FEA), and mechanical system design. Passionate about translating theoretical mechanics into physical prototypes.</p>
+                    <div class="sheet-content" id="sheet-content-area">
+                        <!-- Dynamic content injected here via JS -->
                     </div>
                     <table class="title-block">
                         <tr>
                             <td rowspan="2" class="company-cell">TUFT_MECH</td>
-                            <td><strong>DESIGNED BY:</strong> Tarika Patel</td>
-                            <td><strong>DATE:</strong> 2026-10-21</td>
+                            <td id="tb-designer"><strong>DESIGNED BY:</strong> Tarika Patel</td>
+                            <td id="tb-date"><strong>DATE:</strong> 2026-10-21</td>
                         </tr>
                         <tr>
-                            <td><strong>MAJOR:</strong> Mechanical Eng.</td>
-                            <td><strong>STATUS:</strong> Undergrad / Rev 1.0</td>
+                            <td id="tb-major"><strong>MAJOR:</strong> Mechanical Eng.</td>
+                            <td id="tb-status"><strong>CONFIG:</strong> Default / Rev 1.0</td>
                         </tr>
                     </table>
                 </section>
             </div>
         </main>
     </div>
+
+    <!-- Dynamic Content & State Script -->
+    <script>
+        // 1. Database of your projects and their respective tabs
+        const portfolioData = {
+            1: {
+                title: "Project 1: CAD Bracket Optimization",
+                filename: "Bracket_Opt.sldprt",
+                constraints: {
+                    toolbar: "Configuration: Structural Load Optimization &bull; Units: mm, g, s",
+                    heading: "OBJECTIVE & CONSTRAINTS",
+                    body: "Redesign an aerospace mounting bracket to minimize overall mass while safely withstanding a 1,500 N static downward load without yielding.<br><br><strong>Constraints:</strong> Must fit within existing bolt-pattern envelope constraints, utilize AL-6061-T6 material properties, and maintain a minimum safety factor of 2.0 under peak loading conditions."
+                },
+                role: {
+                    toolbar: "Configuration: Lead CAD Engineer &bull; Team of 3",
+                    heading: "MY ROLE",
+                    body: "Served as the primary CAD and FEA lead responsible for parametric solid modeling, boundary condition setup, and topology optimization iterations."
+                },
+                decisions: {
+                    toolbar: "Configuration: Iterative Design History &bull; Fillets & Ribs",
+                    heading: "DESIGN DECISIONS",
+                    body: "<ul><li>Implemented stress-relief fillets with a minimum radius of 3.5mm around high-stress mounting holes.</li><li>Removed non-load-bearing material pockets through generative pocketing to reduce component weight by 24%.</li><li>Oriented grain structure and extrusions parallel to primary principal stress vectors.</li></ul>"
+                },
+                validation: {
+                    toolbar: "Configuration: ANSYS Static Structural Validation &bull; Von Mises",
+                    heading: "ANALYSIS & VALIDATION",
+                    body: "Performed finite element analysis (FEA) yielding a maximum von Mises stress of 112 MPa (well below the 276 MPa yield strength of AL-6061-T6), resulting in an validated safety factor of 2.46."
+                }
+            },
+            2: {
+                title: "Project 2: Soft Robotics Actuator",
+                filename: "Soft_Gripper.sldasm",
+                constraints: {
+                    toolbar: "Configuration: Pneumatic Fluidic Elastomer &bull; MMGS",
+                    heading: "OBJECTIVE & CONSTRAINTS",
+                    body: "Develop a fluid-driven soft robotic bending actuator capable of delicate manipulation without crushing fragile objects.<br><br><strong>Constraints:</strong> Must operate under low pneumatic pressure (< 50 kPa), use Ecoflex 00-30 silicone elastomer, and achieve a minimum 180-degree angular bending radius upon actuation."
+                },
+                role: {
+                    toolbar: "Configuration: Prototyping & Mechanical Modeling Lead",
+                    heading: "MY ROLE",
+                    body: "Designed 3D-printable negative molds in CAD, managed elastomer casting processes, and tested pressure-deflection relationships."
+                },
+                decisions: {
+                    toolbar: "Configuration: Fiber Reinforcement Routing",
+                    heading: "DESIGN DECISIONS",
+                    body: "<ul><li>Embedded inextensible constrained fiber layers along one side to force asymmetric asymmetric bending upon pressurization.</li><li>Optimized chamber wall thickness to 2.2mm to balance flexibility with burst-pressure resistance.</li></ul>"
+                },
+                validation: {
+                    toolbar: "Configuration: Pressure Testing & Displacement Analysis",
+                    heading: "ANALYSIS & VALIDATION",
+                    body: "Empirical bench testing showed reliable 210-degree bending at 35 kPa internal pressure with zero structural delamination across 500 cyclic actuations."
+                }
+            },
+            3: {
+                title: "Project 3: Bluetooth Audio Helmet",
+                filename: "Smart_Helmet.sldasm",
+                constraints: {
+                    toolbar: "Configuration: Wearable Integration Assembly &bull; MMGS",
+                    heading: "OBJECTIVE & CONSTRAINTS",
+                    body: "Integrate bone-conduction Bluetooth speakers and impact-dampening EPS foam liners into a bicycle helmet without compromising structural safety certification.<br><br><strong>Constraints:</strong> Must comply with CPSC bicycle helmet impact safety standards while maintaining comfortable ergonomics and weather resistance."
+                },
+                role: {
+                    toolbar: "Configuration: Systems Integration & Ergonomics",
+                    heading: "MY ROLE",
+                    body: "Modeled acoustic housing enclosures, integrated internal wiring channels through the EPS foam liner, and ran drop-test simulations."
+                },
+                decisions: {
+                    toolbar: "Configuration: Acoustic Channel Routing",
+                    heading: "DESIGN DECISIONS",
+                    body: "<ul><li>Designed snap-fit transducer pockets directly into the comfort liner for toolless maintenance.</li><li>Created concealed internal wire chases to prevent snagging and weather intrusion.</li></ul>"
+                },
+                validation: {
+                    toolbar: "Configuration: Drop Impact Simulation & Audio Testing",
+                    heading: "ANALYSIS & VALIDATION",
+                    body: "Drop tower simulations demonstrated peak g-force attenuation within safe thresholds (< 200g peak acceleration), successfully passing safety certification guidelines."
+                }
+            }
+        };
+
+        // 2. Read URL Parameters (?project=X&tab=Y)
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentProjectID = urlParams.get('project') || '1';
+        const currentTabName = urlParams.get('tab') || 'constraints';
+
+        // 3. Highlight Sidebar Item
+        const activeSidebarLink = document.getElementById(`sidebar-proj-${currentProjectID}`);
+        if (activeSidebarLink) {
+            activeSidebarLink.classList.add('active-project');
+        }
+
+        // 4. Populate Content Based on State
+        const projData = portfolioData[currentProjectID] || portfolioData[1];
+        const tabData = projData[currentTabName] || projData.constraints;
+
+        // Update File Status Bar
+        document.getElementById("file-status-bar").innerHTML = `Active File: ${projData.filename} &bull; MMGS`;
+
+        // Update Ribbon Toolbar text
+        document.getElementById("ribbon-toolbar-text").innerHTML = tabData.toolbar;
+
+        // Update Sheet Content
+        document.getElementById("sheet-content-area").innerHTML = `
+            <h2>${tabData.heading}</h2>
+            <p>${tabData.body}</p>
+        `;
+
+        // Update Title block subtitle
+        document.getElementById("tb-status").innerHTML = `<strong>PROJECT:</strong> ${projData.title}`;
+
+        // 5. Setup Top Ribbon Tab Clickable Links with correct parameters
+        document.querySelectorAll('.ribbon-tab').forEach(tabElement => {
+            const tabKey = tabElement.getAttribute('data-tab');
+            // Set the href so clicking keeps the current project ID but switches the tab
+            tabElement.setAttribute('href', `index.html?project=${currentProjectID}&tab=${tabKey}`);
+            
+            // Highlight active tab
+            if (tabKey === currentTabName) {
+                tabElement.classList.add('active');
+            }
+        });
+    </script>
 </body>
 </html>
