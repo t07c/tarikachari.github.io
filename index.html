@@ -3,68 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarika | Mechanical Engineering Portfolio</title>
+    <title>Tarika Patel | Mechanical Engineering Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts for precision mono look -->
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Top Navigation Bar -->
-    <header class="navbar">
-        <div class="logo">
-            <span class="logo-box"></span> T. PATEL_MECH
-        </div>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#projects">Assemblies</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+    <!-- Main CAD Interface Wrapper -->
+    <div class="cad-interface">
 
-    <!-- Main Viewport / Hero Section -->
-    <main class="hero">
-        <div class="cad-window">
-            <div class="window-header">
-                <span class="dot red"></span>
-                <span class="dot yellow"></span>
-                <span class="dot green"></span>
-                <span class="window-title">FeatureManager — Part1.sldprt</span>
+        <!-- Left Sidebar: FeatureManager Design Tree (Navigation) -->
+        <aside class="feature-tree">
+            <div class="tree-header">
+                <span class="sw-icon"></span> FeatureManager — Tarika_Assembly
             </div>
-            <div class="window-body">
-                <pre><code>{
-  "part_file": {
-    "designer": "Tarika Patel",
-    "major": "Mechanical Engineering",
-    "institution": "Tufts University",
-    "focus_areas": ["CAD & FEA Modeling", "Soft Robotics", "Mechanism Design"]
-  }
-}</code></pre>
-            </div>
-        </div>
-    </main>
+            <ul class="tree-list">
+                <li class="tree-item root">📁 T. Patel (Design Session)
+                    <ul>
+                        <li class="tree-item"><a href="#about">📄 Sheet1 (About Me)</a></li>
+                        <li class="tree-item"><a href="#projects">📁 Assemblies (Projects)</a>
+                            <ul>
+                                <li class="tree-item sub">⚙️ CAD_Optimization.sldprt</li>
+                                <li class="tree-item sub">🤖 Soft_Robotics.sldasm</li>
+                            </ul>
+                        </li>
+                        <li class="tree-item"><a href="#contact">📝 Revision_Table (Contact)</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
 
-    <!-- Projects Section styled like a Bill of Materials / Drawings -->
-    <section id="projects" class="projects-section">
-        <h2>FEATURED ASSEMBLIES</h2>
-        <div class="project-grid">
-            <div class="project-card">
-                <h3>CAD Optimization Study</h3>
-                <p>Parametric modeling and structural analysis using finite element methods for lightweight assemblies.</p>
-                <span class="tag">SolidWorks</span> <span class="tag">ANSYS</span>
-            </div>
-            <div class="project-card">
-                <h3>Soft Robotics Actuator</h3>
-                <p>Mechanical modeling and prototyping for soft material fluid-driven gripping mechanisms.</p>
-                <span class="tag">Prototyping</span> <span class="tag">Kinematics</span>
-            </div>
-        </div>
-    </section>
+        <!-- Right Viewport Area -->
+        <main class="viewport-area">
+            
+            <!-- Top Toolbar -->
+            <header class="cad-toolbar">
+                <div class="toolbar-group">
+                    <span class="tool-btn">View</span>
+                    <span class="tool-btn">Evaluate</span>
+                    <span class="tool-btn">Mates</span>
+                </div>
+                <div class="toolbar-status">Scale 1:1 &bull; Units: MMGS</div>
+            </header>
 
-    <!-- Footer / Revision Block -->
-    <footer id="contact" class="footer">
-        <p>REV 1.0 &bull; Scale 1:1 &bull; <a href="mailto:tarika@tufts.edu">Email Me</a></p>
-    </footer>
+            <!-- Content Area styled like a Drawing Sheet -->
+            <div class="drawing-canvas">
+
+                <!-- About Section / Title Block Layout -->
+                <section id="about" class="drawing-sheet">
+                    <div class="sheet-content">
+                        <h2>DESIGN INTENT &amp; PROFILE</h2>
+                        <p>Mechanical Engineering undergraduate at Tufts University specializing in parametric CAD, finite element analysis (FEA), and mechanical system design. Passionate about translating theoretical mechanics into physical prototypes.</p>
+                    </div>
+                    <!-- Engineering Drawing Title Block -->
+                    <table class="title-block">
+                        <tr>
+                            <td rowspan="2" class="company-cell">TUFT_MECH</td>
+                            <td><strong>DIGNIFIED BY:</strong> Tarika Patel</td>
+                            <td><strong>DATE:</strong> 2026-10-21</td>
+                        </tr>
+                        <tr>
+                            <td><strong>MAJOR:</strong> Mechanical Eng.</td>
+                            <td><strong>STATUS:</strong> Undergrad / Rev 1.0</td>
+                        </tr>
+                    </table>
+                </section>
+
+                <!-- Projects Section -->
+                <section id="projects" class="section-container">
+                    <h3>FEATURED ASSEMBLIES &amp; PARTS</h3>
+                    <div class="project-grid">
+                        <div class="project-card">
+                            <div class="card-top">Part ID: CAD_01</div>
+                            <h4>CAD Optimization Study</h4>
+                            <p>Parametric modeling and structural analysis using finite element methods for lightweight structural brackets.</p>
+                            <div class="tags">
+                                <span class="tag">SolidWorks</span>
+                                <span class="tag">ANSYS</span>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <div class="card-top">Part ID: ROB_02</div>
+                            <h4>Soft Robotics Actuator</h4>
+                            <p>Mechanical modeling and physical prototyping for soft-material fluid-driven gripping mechanisms.</p>
+                            <div class="tags">
+                                <span class="tag">Prototyping</span>
+                                <span class="tag">Kinematics</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Footer / Revision Block -->
+                <footer id="contact" class="revision-table">
+                    <h3>REVISION HISTORY &amp; CONTACT</h3>
+                    <p>Ready to collaborate? Reach out via email at <a href="mailto:tarika@tufts.edu">tarika@tufts.edu</a> or connect on professional channels.</p>
+                </footer>
+
+            </div>
+        </main>
+    </div>
 
 </body>
 </html>
