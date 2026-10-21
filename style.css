@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: #dcdcdc; /* Classic SolidWorks light/gray UI background */
+    background-color: #dcdcdc;
     color: #222;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     height: 100vh;
@@ -20,7 +20,7 @@ body {
 
 /* --- FeatureManager Sidebar --- */
 .feature-tree {
-    width: 260px;
+    width: 280px;
     background-color: #f0f0f0;
     border-right: 1px solid #c8c8c8;
     display: flex;
@@ -43,7 +43,7 @@ body {
 .sw-icon {
     width: 12px;
     height: 12px;
-    background-color: #e65c00; /* SolidWorks orange accent */
+    background-color: #e65c00;
     display: inline-block;
 }
 
@@ -69,13 +69,17 @@ body {
 .tree-item a {
     color: #0056b3;
     text-decoration: none;
+    display: block;
+    padding: 3px 6px;
+    border-radius: 3px;
 }
 
-.tree-item a:hover {
-    text-decoration: underline;
+.tree-item a:hover, .tree-item a.active-project {
+    background: #d0e4ff;
+    color: #003366;
 }
 
-/* --- Right Viewport & CommandManager --- */
+/* --- Viewport & CommandManager Ribbon --- */
 .viewport-area {
     flex: 1;
     display: flex;
@@ -83,7 +87,6 @@ body {
     background-color: #f7f7f7;
 }
 
-/* Top Menu Bar (File, Edit, View...) */
 .sw-top-menu {
     background: #f0f0f0;
     border-bottom: 1px solid #d0d0d0;
@@ -102,14 +105,8 @@ body {
 .menu-items span {
     cursor: pointer;
     padding: 2px 5px;
-    border-radius: 2px;
 }
 
-.menu-items span:hover {
-    background: #e0e0e0;
-}
-
-/* CommandManager Ribbon Tabs (The Page Navigation) */
 .command-manager {
     background: #e8e8e8;
     border-bottom: 1px solid #c8c8c8;
@@ -126,13 +123,14 @@ body {
 }
 
 .ribbon-tab {
-    padding: 6px 16px;
+    padding: 6px 14px;
     font-size: 11px;
     font-weight: 600;
     color: #444;
     text-decoration: none;
     border-top: 3px solid transparent;
     background: #e8e8e8;
+    cursor: pointer;
 }
 
 .ribbon-tab:hover {
@@ -142,11 +140,10 @@ body {
 .ribbon-tab.active {
     background: #f7f7f7;
     color: #000;
-    border-top-color: #e65c00; /* SolidWorks orange highlight */
+    border-top-color: #e65c00;
     border-bottom: 1px solid #f7f7f7;
 }
 
-/* Ribbon Tool Toolbar */
 .ribbon-toolbar {
     display: flex;
     align-items: center;
@@ -154,32 +151,11 @@ body {
     gap: 10px;
     background: #f7f7f7;
     min-height: 40px;
-}
-
-.tool-icon-group {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    border-right: 1px solid #d0d0d0;
-    padding-right: 12px;
-}
-
-.cad-btn {
-    background: #fff;
-    border: 1px solid #ccc;
-    padding: 4px 10px;
     font-size: 11px;
-    border-radius: 3px;
-    cursor: pointer;
-    color: #333;
+    color: #666;
 }
 
-.cad-btn:hover {
-    background: #e6f2ff;
-    border-color: #99d6ff;
-}
-
-/* --- Drawing Sheet Canvas Area --- */
+/* --- Drawing Sheet Canvas --- */
 .drawing-canvas {
     flex: 1;
     padding: 30px;
@@ -205,14 +181,14 @@ body {
     padding-bottom: 5px;
 }
 
-.sheet-content p {
+.sheet-content p, .sheet-content ul {
     font-size: 13px;
     color: #555;
     line-height: 1.6;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
+    padding-left: 15px;
 }
 
-/* Title Block Table */
 .title-block {
     width: 100%;
     border-collapse: collapse;
@@ -233,53 +209,4 @@ body {
     background: #f9f9f9;
     text-align: center;
     width: 25%;
-}
-
-/* Project Cards */
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 15px;
-    margin-top: 15px;
-}
-
-.project-card {
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 15px;
-}
-
-.card-top {
-    font-size: 10px;
-    color: #e65c00;
-    font-weight: 700;
-    margin-bottom: 6px;
-}
-
-.project-card h4 {
-    font-size: 13px;
-    color: #222;
-    margin-bottom: 8px;
-}
-
-.project-card p {
-    font-size: 12px;
-    color: #666;
-    line-height: 1.4;
-    margin-bottom: 12px;
-}
-
-.tags {
-    display: flex;
-    gap: 5px;
-}
-
-.tag {
-    background: #eee;
-    color: #444;
-    font-size: 10px;
-    padding: 2px 6px;
-    border-radius: 2px;
-    border: 1px solid #d0d0d0;
 }
