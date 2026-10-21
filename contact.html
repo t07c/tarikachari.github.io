@@ -1,4 +1,17 @@
-<!-- Left Sidebar: FeatureManager Design Tree -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revision Table | Tarika Patel</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="cad-interface">
+
+        <!-- Left Sidebar -->
         <aside class="feature-tree">
             <div class="tree-header">
                 <span class="sw-icon"></span> FeatureManager — Assembly
@@ -8,8 +21,57 @@
                     <ul>
                         <li class="tree-item">📄 <a href="index.html">Sheet1 (About Me)</a></li>
                         <li class="tree-item">📁 <a href="projects.html">Assemblies</a></li>
-                        <li class="tree-item">📝 <a href="contact.html">Revision_Table</a></li>
+                        <li class="tree-item">📝 <a href="contact.html" style="color: #4da6ff;">Revision_Table (Active)</a></li>
                     </ul>
                 </li>
             </ul>
         </aside>
+
+        <!-- Right Viewport -->
+        <main class="viewport-area">
+            <header class="cad-toolbar">
+                <div class="toolbar-group">
+                    <span class="tool-btn">ECO Log</span>
+                    <span class="tool-btn">Sign-off</span>
+                </div>
+                <div class="toolbar-status">Drawing Rev: 1.0</div>
+            </header>
+
+            <div class="drawing-canvas">
+                <section class="drawing-sheet">
+                    <div class="sheet-content">
+                        <h2>REVISION HISTORY &amp; COLLABORATION LOG</h2>
+                        <p>Looking to collaborate on mechanical design projects, CAD studies, or engineering initiatives? Check the log below or reach out directly.</p>
+                    </div>
+                    <table class="title-block">
+                        <tr>
+                            <td><strong>REV</strong></td>
+                            <td><strong>DESCRIPTION</strong></td>
+                            <td><strong>DATE</strong></td>
+                            <td><strong>APPROVED</strong></td>
+                        </tr>
+                        <tr>
+                            <td>1.0</td>
+                            <td>Initial Portfolio Release &amp; CAD Framework Setup</td>
+                            <td>2026-10-21</td>
+                            <td>T. Patel</td>
+                        </tr>
+                        <tr>
+                            <td>1.1</td>
+                            <td>Added Assembly Modules &amp; FEA Documentation</td>
+                            <td>Upcoming</td>
+                            <td>T. Patel</td>
+                        </tr>
+                    </table>
+                </section>
+
+                <div class="revision-table">
+                    <h3>DIRECT CONTACT CHANNELS</h3>
+                    <p>Email: <a href="mailto:tarika@tufts.edu">tarika@tufts.edu</a></p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
